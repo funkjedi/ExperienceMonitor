@@ -1,0 +1,11 @@
+## Interface: 30300
+## Title: Experience Monitor
+## Notes: Provides sessions stats related to xp gains and generates post-combat xp summary.
+## Author: funkjedi
+## Version: 0.1
+## SavedVariables: ExperienceMonitorDatabase
+
+embeds.xml
+localization\localization.enUS.lua
+experiencemonitor.lua
+options.lua

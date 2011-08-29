@@ -1,0 +1,59 @@
+
+local L = LibStub('AceLocale-3.0'):NewLocale('ExperienceMonitor', 'enUS', true);
+
+L['EXPERIENCE'] = 'Experience Monitor';
+L['EXPERIENCE_DESC'] = "Experience Monitor is an addon that collects and display session stats about your xp gains. It's based off parts of the most excellent Titan Panel addon.";
+L['SHOW_POST_COMBAT_MSG'] = 'Show "Post-Combat Experience" report in chat';
+L['USAGE_EXPLAINATION'] = "To see a summary of your session stats use the |cffffff00/em|r slash command. This will print out various stats about your experience gains during your current level and during the current session. It will also display the number of kills/gains until you level and how much rested xp you have.";
+L["POST_COMBAT_EXPERIENCE"] = "Post-Combat Experience: +%d (%.1f%%) - %.1f%% to Level %d";
+
+
+L["TITAN_NA"] = "N/A";
+L["TITAN_SECONDS"] = "seconds";
+L["TITAN_MINUTES"] = "minutes";
+L["TITAN_HOURS"] = "hours";
+L["TITAN_DAYS"] = "days";
+L["TITAN_SECONDS_ABBR"] = "s";
+L["TITAN_MINUTES_ABBR"] = "m";
+L["TITAN_HOURS_ABBR"] = "h";
+L["TITAN_DAYS_ABBR"] = "d";
+
+L["TITAN_XP_FORMAT"] = "%d";
+L["TITAN_XP_PERCENT_FORMAT"] = "%d".." (%.1f%%)";
+L["TITAN_XP_BUTTON_LABEL_XPHR_LEVEL"] = "XP/hr this level: ";
+L["TITAN_XP_BUTTON_LABEL_XPHR_SESSION"] = "XP/hr this session: ";
+L["TITAN_XP_BUTTON_LABEL_TOLEVEL_TIME_LEVEL"] = "Time to level: ";
+L["TITAN_XP_LEVEL_COMPLETE"] = "Level Complete: ";
+L["TITAN_XP_TOTAL_RESTED"] = "Rested: ";
+L["TITAN_XP_XPTOLEVELUP"] = "XP to level Up: ";
+L["TITAN_XP_TOOLTIP"] = "XP Info";
+L["TITAN_XP_TOOLTIP_TOTAL_TIME"] = "Total time played: ";
+L["TITAN_XP_TOOLTIP_LEVEL_TIME"] = "Time played this level: ";
+L["TITAN_XP_TOOLTIP_SESSION_TIME"] = "Time played this session: ";
+L["TITAN_XP_TOOLTIP_TOTAL_XP"] = "Total XP required this level: ";
+L["TITAN_XP_TOOLTIP_LEVEL_XP"] = "XP gained this level: ";
+L["TITAN_XP_TOOLTIP_TOLEVEL_XP"] = "XP needed to level: ";
+L["TITAN_XP_TOOLTIP_SESSION_XP"] = "XP gained this session: ";
+L["TITAN_XP_TOOLTIP_XPHR_LEVEL"] = "XP/hr this level: ";
+L["TITAN_XP_TOOLTIP_XPHR_SESSION"] = "XP/hr this session: ";     
+L["TITAN_XP_TOOLTIP_TOLEVEL_LEVEL"] = "Time to level (level rate): ";
+L["TITAN_XP_TOOLTIP_TOLEVEL_SESSION"] = "Time to level (session rate): ";
+L["TITAN_XP_MENU_TEXT"] = "XP";
+L["TITAN_XP_MENU_SHOW_XPHR_THIS_LEVEL"] = "Show XP/hr this level";
+L["TITAN_XP_MENU_SHOW_XPHR_THIS_SESSION"] = "Show XP/hr this session";
+L["TITAN_XP_MENU_SHOW_RESTED_TOLEVELUP"] = "Show Multi-info view";
+L["TITAN_XP_MENU_SIMPLE_BUTTON_TITLE"] = "Button";
+L["TITAN_XP_MENU_SIMPLE_BUTTON_RESTED"] = "Show Rested XP";
+L["TITAN_XP_MENU_SIMPLE_BUTTON_TOLEVELUP"] = "Show XP to level";
+L["TITAN_XP_MENU_SIMPLE_BUTTON_KILLS"] = "Show est. kills to level";
+L["TITAN_XP_MENU_RESET_SESSION"] = "Reset session";
+L["TITAN_XP_MENU_REFRESH_PLAYED"] = "Refresh Timers";
+L["TITAN_XP_UPDATE_PENDING"] = "Updating...";
+L["TITAN_XP_KILLS_LABEL"] = "Kills to level (at %d XP gained last): ";
+L["TITAN_XP_KILLS_LABEL_SHORT"] = "Est. Kills: ";
+L["TITAN_XP_BUTTON_LABEL_SESSION_TIME"] = "Session Time: ";
+L["TITAN_XP_MENU_SHOW_SESSION_TIME"] = "Show Session Time";
+L["TITAN_XP_GAIN_PATTERN"] = "(.*) dies, you gain (%d+) experience.";
+L["TITAN_XP_XPGAINS_LABEL_SHORT"] = "Est. Gains: ";
+L["TITAN_XP_XPGAINS_LABEL"] = "XP Gains to level (at %d XP gained last): ";
+L["TITAN_XP_MENU_SIMPLE_BUTTON_XPGAIN"] = "Show est. XP gains to level";
