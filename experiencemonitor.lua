@@ -20,10 +20,10 @@ function ExperienceMonitor:Initialize()
 
 	self:ScheduleRepeatingTimer('EXPERIENCE_TIMEKEEPER', function()
 		if ExperienceMonitor.data then
-			ExperienceMonitor.data.time_played.total = ExperienceMonitor.data.time_played.total + 1
-			ExperienceMonitor.data.time_played.level = ExperienceMonitor.data.time_played.level + 1
+			ExperienceMonitor.data.time_played.total = ExperienceMonitor.data.time_played.total + 1;
+			ExperienceMonitor.data.time_played.level = ExperienceMonitor.data.time_played.level + 1;
 		end
-	end, 1)
+	end, 1);
 end
 
 function ExperienceMonitor:PLAYER_ENTERING_WORLD()
@@ -62,7 +62,7 @@ function ExperienceMonitor:PLAYER_XP_UPDATE()
 	local player_xp = UnitXP('player');
 	self.data.xp.gain = player_xp - self.data.xp.last_gain;
 	if self.data.xp.gain < 0 then
-		self.data.xp.gain = 0
+		self.data.xp.gain = 0;
 	end
 	self.data.xp.last_gain = player_xp;
 	self.data.xp.session = player_xp - self.data.xp.initial + self.data.xp.accumulated;
@@ -136,7 +136,7 @@ function ExperienceMonitor:PLAYER_REGEN_ENABLED()
 				stats.session.last_fight / stats.required * 100,
 				stats.percentage,
 				UnitLevel('player') + 1
-			))
+			));
 		end
 	end
 end
@@ -147,25 +147,31 @@ end
 
 
 SLASH_EXPERIENCE1 = "/em"
-SlashCmdList['EXPERIENCE'] = function()
+SlashCmdList['EXPERIENCE'] = function(cmd)
+	if cmd == 'reset' then
+		ExperienceMonitor.data = nil;
+		ExperienceMonitor:PLAYER_ENTERING_WORLD();
+		return;
+	end
+
 	local output = function(title, message)
-		print(("|cffbbbbff%s|r%s"):format(title, message))
+		print(("|cffbbbbff%s|r%s"):format(title, message));
 	end
 	local stats = ExperienceMonitor:GetExperience();
-	output(L["TITAN_XP_TOOLTIP_TOTAL_TIME"],      ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.played))
-	output(L["TITAN_XP_TOOLTIP_LEVEL_TIME"],      ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.level.duration))
-	output(L["TITAN_XP_TOOLTIP_SESSION_TIME"],    ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.session.duration))
-	output(L["TITAN_XP_TOOLTIP_TOTAL_XP"],        tostring(stats.required))
-	output(L["TITAN_XP_TOTAL_RESTED"],            tostring(stats.rested))
-	output(L["TITAN_XP_TOOLTIP_LEVEL_XP"],        format(L["TITAN_XP_PERCENT_FORMAT"], stats.current, stats.percentage))
-	output(L["TITAN_XP_TOOLTIP_TOLEVEL_XP"],      format(L["TITAN_XP_PERCENT_FORMAT"], stats.remaining, 100 - stats.percentage))
-	output(L["TITAN_XP_TOOLTIP_SESSION_XP"],      tostring(stats.session.gained))
-	output(format(L["TITAN_XP_KILLS_LABEL"],      stats.session.last_mob), tostring(stats.kills_to_level))
-	output(format(L["TITAN_XP_XPGAINS_LABEL"],    stats.session.last_gain), tostring(stats.gains_to_level))
-	output(L["TITAN_XP_TOOLTIP_XPHR_LEVEL"],      format(L["TITAN_XP_FORMAT"], stats.level.per_hour))
-	output(L["TITAN_XP_TOOLTIP_XPHR_SESSION"],    format(L["TITAN_XP_FORMAT"], stats.session.per_hour))
-	output(L["TITAN_XP_TOOLTIP_TOLEVEL_LEVEL"],   ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.level.time_to_level))
-	output(L["TITAN_XP_TOOLTIP_TOLEVEL_SESSION"], ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.session.time_to_level))
+	output(L["TITAN_XP_TOOLTIP_TOTAL_TIME"],      ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.played));
+	output(L["TITAN_XP_TOOLTIP_LEVEL_TIME"],      ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.level.duration));
+	output(L["TITAN_XP_TOOLTIP_SESSION_TIME"],    ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.session.duration));
+	output(L["TITAN_XP_TOOLTIP_TOTAL_XP"],        tostring(stats.required));
+	output(L["TITAN_XP_TOTAL_RESTED"],            tostring(stats.rested));
+	output(L["TITAN_XP_TOOLTIP_LEVEL_XP"],        format(L["TITAN_XP_PERCENT_FORMAT"], stats.current, stats.percentage));
+	output(L["TITAN_XP_TOOLTIP_TOLEVEL_XP"],      format(L["TITAN_XP_PERCENT_FORMAT"], stats.remaining, 100 - stats.percentage));
+	output(L["TITAN_XP_TOOLTIP_SESSION_XP"],      tostring(stats.session.gained));
+	output(format(L["TITAN_XP_KILLS_LABEL"],      stats.session.last_mob), tostring(stats.kills_to_level));
+	output(format(L["TITAN_XP_XPGAINS_LABEL"],    stats.session.last_gain), tostring(stats.gains_to_level));
+	output(L["TITAN_XP_TOOLTIP_XPHR_LEVEL"],      format(L["TITAN_XP_FORMAT"], stats.level.per_hour));
+	output(L["TITAN_XP_TOOLTIP_XPHR_SESSION"],    format(L["TITAN_XP_FORMAT"], stats.session.per_hour));
+	output(L["TITAN_XP_TOOLTIP_TOLEVEL_LEVEL"],   ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.level.time_to_level));
+	output(L["TITAN_XP_TOOLTIP_TOLEVEL_SESSION"], ExperienceMonitor.TitanUtils_GetAbbrTimeText(stats.session.time_to_level));
 end
 
 
